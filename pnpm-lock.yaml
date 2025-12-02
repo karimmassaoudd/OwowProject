@@ -1,32 +1,17 @@
-lockfileVersion: '9.0'
+# 1. Make sure you're on the correct branch
+git checkout karimmmassaoudd_Pixel-Weather-Mode
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
+# 2. Navigate to the owowapp directory
+cd owowapp
 
-importers:
+# 3. Delete the old lockfile
+rm pnpm-lock.yaml
 
-  .:
-    dependencies:
-      lucide-react:
-        specifier: ^0.544.0
-        version: 0.544.0(react@19.2.0)
+# 4.  Regenerate the lockfile
+pnpm install
 
-packages:
-
-  lucide-react@0.544.0:
-    resolution: {integrity: sha512-t5tS44bqd825zAW45UQxpG2CvcC4urOwn2TrwSH8u+MjeE+1NnWl6QqeQ/6NdjMqdOygyiT9p3Ev0p1NJykxjw==}
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  react@19.2.0:
-    resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
-    engines: {node: '>=0.10.0'}
-
-snapshots:
-
-  lucide-react@0.544.0(react@19.2.0):
-    dependencies:
-      react: 19.2.0
-
-  react@19.2.0: {}
+# 5. Go back to root and commit
+cd ..
+git add owowapp/pnpm-lock. yaml
+git commit -m "chore: update pnpm-lock.yaml"
+git push origin karimmmassaoudd_Pixel-Weather-Mode
