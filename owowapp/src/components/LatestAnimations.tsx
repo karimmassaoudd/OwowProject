@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-import { AnimationCard } from './animation-card';
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { AnimationCard } from "./animation-card";
 
 interface Animation {
   id: string;
@@ -27,8 +27,8 @@ export default function LatestAnimations({
   // Default animations with star preview
   const defaultAnimations: Animation[] = [
     {
-      id: '1',
-      title: 'Star animation',
+      id: "1",
+      title: "Star animation",
       preview: (
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <polygon
@@ -40,8 +40,8 @@ export default function LatestAnimations({
       equipped: true,
     },
     {
-      id: '2',
-      title: 'Star animation',
+      id: "2",
+      title: "Star animation",
       preview: (
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <polygon
@@ -53,8 +53,8 @@ export default function LatestAnimations({
       equipped: false,
     },
     {
-      id: '3',
-      title: 'Star animation',
+      id: "3",
+      title: "Star animation",
       preview: (
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <polygon
@@ -66,8 +66,8 @@ export default function LatestAnimations({
       equipped: false,
     },
     {
-      id: '4',
-      title: 'Star animation',
+      id: "4",
+      title: "Star animation",
       preview: (
         <svg viewBox="0 0 100 100" className="w-full h-full">
           <polygon
@@ -83,7 +83,7 @@ export default function LatestAnimations({
   const displayAnimations = animations || defaultAnimations;
 
   return (
-  <div className="w-full bg-background text-muted-foreground px-8 py-6">
+    <div className="w-full bg-background text-muted-foreground px-8 py-6">
       {/* Header with Collapse Button */}
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
@@ -92,7 +92,7 @@ export default function LatestAnimations({
         <ChevronDown
           size={20}
           className={`transform transition-transform duration-300 ${
-            isCollapsed ? '-rotate-90' : 'rotate-0'
+            isCollapsed ? "-rotate-90" : "rotate-0"
           }`}
         />
         <span className="text-base font-medium">Latest Animations</span>
@@ -111,10 +111,12 @@ export default function LatestAnimations({
               <AnimationCard
                 id={animation.id}
                 title={animation.title}
-                status={animation.equipped ? 'equipped' : 'available'}
+                isEquipped={animation.equipped}
                 animationType="star" // Assuming all default animations are of type 'star'
-                onDelete={(id) => onMenuClick?.(id)}
-                onFavorite={(id) => onAnimationSelect?.(id)}
+                onDelete={(id: string) => onMenuClick?.(id)}
+                onFavorite={(id: string) => onAnimationSelect?.(id)}
+                onEquip={(id: string) => onAnimationSelect?.(id)}
+                status={""}
               />
             </div>
           ))}

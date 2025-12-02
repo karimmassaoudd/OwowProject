@@ -4,15 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Menu, ChevronDown, ChevronUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
+import { Button } from "@radix-ui/themes";
+
 import Modal from "@/components/modal";
 import GifUploadPopup from "@/components/gif-upload-popup";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@radix-ui/react-dropdown-menu";
 
 interface TopBarProps {
   onToggleSidebar: () => void;
@@ -41,7 +42,6 @@ export function TopBar({ onToggleSidebar }: TopBarProps) {
       <div className="flex items-center gap-2">
         <Button
           variant="ghost"
-          size="icon"
           className="text-muted-foreground"
           onClick={onToggleSidebar}
         >
@@ -55,8 +55,12 @@ export function TopBar({ onToggleSidebar }: TopBarProps) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent sideOffset={6} className="min-w-[12rem]">
-            <DropdownMenuItem onClick={() => router.push('/create')}>Animation Maker</DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setUploadOpen(true)}>Upload</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => router.push("/create")}>
+              Animation Maker
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setUploadOpen(true)}>
+              Upload
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         <Link href="/">
@@ -74,7 +78,11 @@ export function TopBar({ onToggleSidebar }: TopBarProps) {
             onClick={handleSortToggle}
             className="gap-2 bg-[#1f1f1f] text-[#c3c3c3] px-3 py-1 rounded-md focus:outline-none hover:bg-[#1f1f1f] hover:text-[#c3c3c3]"
           >
-            {sortOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            {sortOpen ? (
+              <ChevronUp className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
             Sort: {selectedSort}
           </Button>
           {sortOpen && (
@@ -104,7 +112,11 @@ export function TopBar({ onToggleSidebar }: TopBarProps) {
             onClick={handleFilterToggle}
             className="gap-2 bg-[#1f1f1f] text-[#c3c3c3] border-2 border-[#323232] px-3 py-1 rounded-md focus:outline-none hover:bg-[#1f1f1f] hover:text-[#c3c3c3]"
           >
-            {filterOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            {filterOpen ? (
+              <ChevronUp className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
             Filter: {selectedFilter}
           </Button>
           {filterOpen && (
